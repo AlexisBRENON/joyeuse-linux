@@ -1,0 +1,41 @@
+
+
+[2021-08-14 14:27:48.503][Debug](,0,default) App Start
+[2021-08-14 14:27:48.506][Debug](,0,default) ------------------------------------------------------
+[2021-08-14 14:27:48.513][Debug](,0,default) Sys locale language: "fran?ais"  -  "fr"
+[2021-08-14 14:27:48.519][Debug](,0,default) Apply translation file: "joy_upd_fr" Result: true
+[2021-08-14 14:27:48.659][Debug](,0,default) Screen Logical DPI: 96 Scale factor: 1
+[2021-08-14 14:27:48.668][Debug](,0,default) Fw file found: "cube_fw_v5.07.hex"
+[2021-08-14 14:27:48.673][Debug](,0,default) Choosen fw version: "5.07"
+[2021-08-14 14:27:48.678][Debug](,0,default) New drive name: "JOYEUSE-507"
+[2021-08-14 14:27:57.658][Debug](,0,default) Select page: "Drive Detect"
+[2021-08-14 14:28:02.342][Debug](,0,default) Search for a Joyeuse drive...
+[2021-08-14 14:28:02.497][Debug](,0,default) Stop:  "DRIVE_OP_SEARCH"
+[2021-08-14 14:28:02.519][Debug](,0,default) Progress: "DRIVE_OP_SEARCH" : 100
+[2021-08-14 14:28:02.539][Debug](,0,default) Drive found: "NO NAME (D:)" "\\\\?\\Volume{00000000-4605-1521-0000-000000000000}\\" 125 MB
+[2021-08-14 14:28:02.555][Debug](,0,default) Cube variant: 0
+[2021-08-14 14:28:02.560][Debug](,0,default) Cubes current content lang: "FRANCAIS"
+[2021-08-14 14:28:02.567][Debug](,0,default) Available content langs in the app folder: ("FRANCAIS")
+[2021-08-14 14:28:02.579][Debug](,0,default) Select page: "Drive Select"
+[2021-08-14 14:28:34.601][Debug](,0,default) Select page: "Ask For Backup"
+[2021-08-14 14:30:37.333][Debug](,0,default) Select page: "Backup Setup"
+[2021-08-14 14:30:40.006][Debug](,0,default) Select page: "Backup Progress"
+[2021-08-14 14:32:03.857][Debug](,0,default) Start backup 114 files from the: "D:/" to: "C:/users/alexis/Documents/joyeuse/JoyeuseCube"
+[2021-08-14 14:32:03.898][Debug](,0,default) Progress: "DRIVE_OP_SAVE" : 0
+[2021-08-14 14:32:03.912][Debug](,0,default) Progress: "DRIVE_OP_SAVE" : 0
+[2021-08-14 14:32:04.326][Debug](,0,default) Progress: "DRIVE_OP_SAVE" : 1
+[...]
+[2021-08-14 14:34:30.273][Debug](,0,default) Progress: "DRIVE_OP_SAVE" : 99
+[2021-08-14 14:34:30.332][Debug](,0,default) Stop:  "DRIVE_OP_SAVE"
+[2021-08-14 14:34:30.346][Debug](,0,default) Progress: "DRIVE_OP_SAVE" : 100
+[2021-08-14 14:34:30.366][Debug](,0,default) Backup of 114 files was successfully done
+[2021-08-14 14:34:30.385][Debug](,0,default) Stop:  "DRIVE_OP_SAVE"
+[2021-08-14 14:34:30.392][Debug](,0,default) Progress: "DRIVE_OP_SAVE" : 100
+[2021-08-14 14:35:10.983][Debug](,0,default) Select page: "Format Progress"
+[2021-08-14 14:35:11.087][Debug](,0,default) Progress: "DRIVE_OP_FORMAT" : 0
+[2021-08-14 14:35:11.250][Critical](,0,default) "Ne reconna?t pas ??format D: /q /fs:FAT /v:JOYEUSE-507 /x /y?? comme commande interne ou externe, ou fichier de commandes."
+[2021-08-14 14:35:16.258][Critical](,0,default) Drive format failed
+[2021-08-14 14:35:16.279][Debug](,0,default) Stop:  "DRIVE_OP_FORMAT"
+[2021-08-14 14:35:16.302][Debug](,0,default) Progress: "DRIVE_OP_FORMAT" : -1
+[2021-08-14 14:35:16.326][Debug](,0,default) Select page: "Error"
+[2021-08-14 14:35:16.335][Critical](,0,default) Error: "006"

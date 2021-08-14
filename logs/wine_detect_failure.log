@@ -1,0 +1,16 @@
+
+
+[2021-08-14 14:18:02.886][Debug](,0,default) App Start
+[2021-08-14 14:18:02.889][Debug](,0,default) ------------------------------------------------------
+[2021-08-14 14:18:02.897][Debug](,0,default) Sys locale language: "fran?ais"  -  "fr"
+[2021-08-14 14:18:02.903][Debug](,0,default) Apply translation file: "joy_upd_fr" Result: true
+[2021-08-14 14:18:03.050][Debug](,0,default) Screen Logical DPI: 96 Scale factor: 1
+[2021-08-14 14:18:03.060][Debug](,0,default) Fw file found: "cube_fw_v5.07.hex"
+[2021-08-14 14:18:03.067][Debug](,0,default) Choosen fw version: "5.07"
+[2021-08-14 14:18:03.073][Debug](,0,default) New drive name: "JOYEUSE-507"
+[2021-08-14 14:18:14.632][Debug](,0,default) Select page: "Drive Detect"
+[2021-08-14 14:18:23.364][Debug](,0,default) Search for a Joyeuse drive...
+[2021-08-14 14:18:23.424][Debug](,0,default) Stop:  "DRIVE_OP_SEARCH"
+[2021-08-14 14:18:23.431][Debug](,0,default) Progress: "DRIVE_OP_SEARCH" : -1
+[2021-08-14 14:18:23.444][Debug](,0,default) No Joyeuse drive found
+[2021-08-14 14:18:23.451][Debug](,0,default) Select page: "Drive Select"
