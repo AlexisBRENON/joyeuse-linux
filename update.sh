@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -eux
+
 # Brides de scripts pour faire une versionneuse pour Windows.
 
 drive_search() {
