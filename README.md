@@ -6,8 +6,6 @@ Je l'utilise sur un système ArchLinux:
 
 ```shell
 $ uname -a
-```
-```
 Linux brenon 5.13.9-arch1-1 #1 SMP PREEMPT Sun, 08 Aug 2021 11:25:35 +0000 x86_64 GNU/Linux
 ```
 
@@ -31,7 +29,7 @@ Aucun souci pour l'installation, mais impossible de détecter la compteuse (voir
 Ceci était dû à un problème de droits sous Linux.
 Après avoir branché la compteuse et monté le système de fichier, celui-ci doit apparaitre dans la liste des lecteurs dans la configuration de Wine.
 ```shell
-winecfg
+$ winecfg
 ```
 Ouvrez l'onglet "Lecteurs".
 Il doit y avoir une entrée pointant sur le point de montage de la compteuse.
@@ -44,12 +42,9 @@ Pour corriger le problème, il faut vérifier les droits du noeud `/dev/sd*` uti
 Dans mon cas, le groupe `disk` a accès au périphérique. Suffit donc d'ajouter mon utilisateur dans ce groupe.
 ```shell
 $ ls -l /dev/sda
-```
-```
 brw-rw---- 1 root disk 8, 0 14 août  14:44 /dev/sda
-```
-```shell
-sudo usermod -a -G disk alexis
+
+$ sudo usermod -a -G disk alexis
 ```
 
 Cette fois, la compteuse est détectée par la versionneuse.
