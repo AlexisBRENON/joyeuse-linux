@@ -83,7 +83,10 @@ Aux vues du [fichier de log](logs/windows_flash_success.log) obtenu après la mi
 
 Les étapes 1 à 4 semblent facilement réalisable sous Linux, puisqu'il s'agit principalement de manipulation de fichiers.
 L'étape 5 semble assez simple et peut être simplifiée avec une règle udev adéquate
-L'étape 6 utilise un [logiciel tiers](https://www.st.com/en/development-tools/stm32cubeprog.html). Celui-ci semble disponible pour Linux, mais il existe également une [alternative](http://dfu-util.sourceforge.net/)
+L'étape 6 utilise un [logiciel tiers](https://www.st.com/en/development-tools/stm32cubeprog.html).
+Celui-ci semble disponible pour Linux, mais il existe également une [alternative](http://dfu-util.sourceforge.net/).
+En revanche il faut avoir accès au nouveau firmware (`cube_fw_vX.XX.hex`).
+Celui-ci est disponible après installation de la versionneuse via wine, mais un lien de téléchargement direct (avec ou sans identification) permettrait une meilleure intégration.
 L'étape 7 semble assez simple aussi
 Finalement, pour l'étape 8 nous sommes de retour sur de la manipulation de fichiers assez simple.
 
