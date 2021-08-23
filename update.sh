@@ -24,7 +24,11 @@ drive_search() {
 
 get_backup_path() {
   MOUNT_POINT="$1"
-  backup_path="${XDG_STATE_HOME:-${HOME}/.local/state}/Joyeuse/backups/$(date -Iseconds)_$(basename "${MOUNT_POINT}/Secrets/JOY_"*)_$(basename "${MOUNT_POINT}/Secrets/VERSION_V"*)"
+  current_date="$(date -Iseconds)"
+  serial="$(basename "${MOUNT_POINT}/Secrets/JOY_"*)"
+  version="$(basename "${MOUNT_POINT}/Secrets/VERSION_V"*)"
+  backup_root="${XDG_STATE_HOME:-${HOME}/.local/state}/Joyeuse/backups/"
+  backup_path="${backup_root}${current_date}_${serial}_${version}/"
   mkdir -p "${backup_path}"
   echo "${backup_path}"
 }
@@ -36,7 +40,7 @@ drive_save() {
     --verbose --progress --human-readable \
     --compress --archive \
     --hard-links --one-file-system \
-    "${MOUNT_POINT}" "${backup_path}"
+    "${MOUNT_POINT}/" "${backup_path}"
 }
 
 drive_restore() {
@@ -46,7 +50,7 @@ drive_restore() {
     --verbose --progress --human-readable \
     --compress --archive \
     --hard-links --one-file-system \
-    "${backup_path}" "${MOUNT_POINT}"
+    "${backup_path}" "${MOUNT_POINT}/"
 }
 
 drive_format() {
