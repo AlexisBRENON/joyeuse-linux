@@ -9,37 +9,44 @@ drive_search() {
     if [ -d "${MOUNT_POINT}/Secrets" ]; then
       for SECRET_FILE in "${MOUNT_POINT}/Secrets/"*; do
         case "$(basename "${SECRET_FILE}")" in
-          JOY-*)
-            echo "${MOUNT_POINT}"
-            exit 0
-            ;;
-          *)
-            ;;
+        JOY_*)
+          echo "${MOUNT_POINT}"
+          exit 0
+          ;;
+        *) ;;
+
         esac
       done
     fi
   done
+  exit 1
+}
+
+get_backup_path() {
+  MOUNT_POINT="$1"
+  backup_path="${XDG_STATE_HOME:-${HOME}/.local/state}/Joyeuse/backups/$(date -Iseconds)_$(basename "${MOUNT_POINT}/Secrets/JOY_"*)_$(basename "${MOUNT_POINT}/Secrets/VERSION_V"*)"
+  mkdir -p "${backup_path}"
+  echo "${backup_path}"
 }
 
 drive_save() {
   MOUNT_POINT="$1"
-  backup_id=$(basename "${MOUNT_POINT}/Secrets/JOY-"*)_$(basename "${MOUNT_POINT}/Secrets/VERSION_V"*)_$(date -Iseconds)
+  backup_path="$2"
   rsync \
     --verbose --progress --human-readable \
     --compress --archive \
     --hard-links --one-file-system \
-    "${MOUNT_POINT}" "/var/joyeuse/backup/${backup_id}"
-  echo "${backup_id}"
+    "${MOUNT_POINT}" "${backup_path}"
 }
 
 drive_restore() {
   MOUNT_POINT="$1"
-  backup_id="$2"
+  backup_path="$2"
   rsync \
     --verbose --progress --human-readable \
     --compress --archive \
     --hard-links --one-file-system \
-    "/var/joyeuse/backup/${backup_id}" "${MOUNT_POINT}"
+    "${backup_path}" "${MOUNT_POINT}"
 }
 
 drive_format() {
@@ -57,7 +64,7 @@ drive_wait_connection() {
       echo "${mount_point}"
       exit 0
     fi
-    i=$(( i + 1 ))
+    i=$((i + 1))
     sleep 1
   done
 }
@@ -82,12 +89,21 @@ dfu_update() {
 }
 
 main() {
+  echo "Search for a Joyeuse drive..."
   mount_point="$(drive_search)"
-  backup_id="$(drive_save "${mount_point}")"
-  drive_format "${mount_point}"
-  go_boot_mode "${mount_point}"
-  serial_device="$(dfu_search)"
-  dfu_update "${serial_device}"
-  mount_point="$(drive_wait_connection)"
-  drive_restore "${mount_point}" "${backup_id}"
+  echo "Drive found: \"${mount_point}\""
+  df -h "${mount_point}"
+
+  backup_path="$(get_backup_path "${mount_point}")"
+  echo "Start backup from ${mount_point} to ${backup_path}"
+  drive_save "${mount_point}" "${backup_path}"
+  echo "Backup was successfully done"
+  #  drive_format "${mount_point}"
+  #  go_boot_mode "${mount_point}"
+  #  serial_device="$(dfu_search)"
+  #  dfu_update "${serial_device}"
+  #  mount_point="$(drive_wait_connection)"
+  #  drive_restore "${mount_point}" "${backup_path}"
 }
+
+main

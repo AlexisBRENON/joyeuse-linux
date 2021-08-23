@@ -65,7 +65,15 @@ D'une part, les utilitaires censés être nativement présents (`format`, `diskp
 D'autre part, l'utilisation de ces utilitaires requiert généralement des droits d'administrateur, ce qui n'est pas possible avec wine.
 https://forum.winehq.org/viewtopic.php?t=30236
 
-Une autre solution peut être de modifier le script pour éviter l'appel à `format` (remplacer par `rm` ?)
+J'ai essayé de modifier le script pour supprimer l'appel à la commande `format`.
+Mais le processus de mise à jour est quand échoue quand même, avec une erreur 006 (voir le [log](logs/wine_no_format_failure.log)).
+Cette erreur doit venir d'une vérification faite après le formatage (système de fichier vide, label de la partition, autre chose ?) qui échoue, puisque le formatage n'a pas vraiment eu lieu.
+
+Ma prochaine étape va être de modifier l'appel à `format`, en le remplaçant par une commande similaire à la commande UNIX `rm` (`rmdir` a priori).
+Une éventuelle vérification que le système de fichier est vide ne devrait donc plus poser de problème.
+
+En cas d'échec, j'essaierais de modifier le label du périphérique qui apparait comme `"NO NAME (D:)" "\\\\?\\Volume{...}\\"` avec Wine, alors que sur une installation native le nom "Joyeuse" est présent: `"JOYEUSE-AE (E:)" "\\\\?\\Volume{...}\\"`.
+Mais le nommage de disques avec wine utilise un fichier caché à la racine du-dit disque, ce qui empêche d'avoir un système de fichier vide (https://bugs.winehq.org/show_bug.cgi?id=13273).
 
 ### Native Linux
 

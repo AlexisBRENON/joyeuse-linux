@@ -6,6 +6,7 @@
 [Debug](,0,default) Fw file found: "cube_fw_v5.07.hex"
 [Debug](,0,default) Choosen fw version: "5.07"
 [Debug](,0,default) New drive name: "JOYEUSE-507"
+[Critical](,0,) EnableNonClientDpiScaling() failed for HWND 0x20060 (120) (Appel non impl?ment?.)
 [Debug](,0,default) Select page: "Drive Detect"
 [Debug](,0,default) Search for a Joyeuse drive...
 [Debug](,0,default) Stop:  "DRIVE_OP_SEARCH"
@@ -16,22 +17,8 @@
 [Debug](,0,default) Available content langs in the app folder: ("FRANCAIS")
 [Debug](,0,default) Select page: "Drive Select"
 [Debug](,0,default) Select page: "Ask For Backup"
-[Debug](,0,default) Select page: "Backup Setup"
-[Debug](,0,default) Select page: "Backup Progress"
-[Debug](,0,default) Start backup 114 files from the: "D:/" to: "C:/users/alexis/Documents/joyeuse/JoyeuseCube"
-[Debug](,0,default) Progress: "DRIVE_OP_SAVE" : 0
-[Debug](,0,default) Progress: "DRIVE_OP_SAVE" : 0
-[Debug](,0,default) Progress: "DRIVE_OP_SAVE" : 1
-[...]
-[Debug](,0,default) Progress: "DRIVE_OP_SAVE" : 99
-[Debug](,0,default) Stop:  "DRIVE_OP_SAVE"
-[Debug](,0,default) Progress: "DRIVE_OP_SAVE" : 100
-[Debug](,0,default) Backup of 114 files was successfully done
-[Debug](,0,default) Stop:  "DRIVE_OP_SAVE"
-[Debug](,0,default) Progress: "DRIVE_OP_SAVE" : 100
 [Debug](,0,default) Select page: "Format Progress"
 [Debug](,0,default) Progress: "DRIVE_OP_FORMAT" : 0
-[Critical](,0,default) "Ne reconna?t pas ??format D: /q /fs:FAT /v:JOYEUSE-507 /x /y?? comme commande interne ou externe, ou fichier de commandes."
 [Critical](,0,default) Drive format failed
 [Debug](,0,default) Stop:  "DRIVE_OP_FORMAT"
 [Debug](,0,default) Progress: "DRIVE_OP_FORMAT" : -1

@@ -1,89 +1,86 @@
-
-
-
-[2021-08-10 17:56:28.509][Debug](,0,default) App Start
-[2021-08-10 17:56:28.509][Debug](,0,default) ------------------------------------------------------
-[2021-08-10 17:56:28.509][Debug](,0,default) Sys locale language: "fran?ais"  -  "fr"
-[2021-08-10 17:56:28.509][Debug](,0,default) Apply translation file: "joy_upd_fr" Result: true
-[2021-08-10 17:56:28.809][Debug](,0,default) Screen Logical DPI: 96 Scale factor: 1
-[2021-08-10 17:56:36.259][Debug](,0,default) Fw file found: "cube_fw_v5.07.hex"
-[2021-08-10 17:56:36.259][Debug](,0,default) Fw file found: "cube_fw_v5.07.hex"
-[2021-08-10 17:56:36.259][Debug](,0,default) New drive name: "JOYEUSE-507"
-[2021-08-10 17:56:36.259][Debug](,0,default) Choosen fw version: "5.07"
-[2021-08-10 17:56:36.259][Debug](,0,default) New drive name: "JOYEUSE-507"
-[2021-08-10 17:57:08.439][Debug](,0,default) Select page: "Drive Detect"
-[2021-08-10 17:57:49.289][Debug](,0,default) Search for a Joyeuse drive...
-[2021-08-10 17:57:50.539][Debug](,0,default) Stop:  "DRIVE_OP_SEARCH"
-[2021-08-10 17:57:50.539][Debug](,0,default) Progress: "DRIVE_OP_SEARCH" : 100
-[2021-08-10 17:57:50.539][Debug](,0,default) Drive found: "JOYEUSE-AE (E:)" "\\\\?\\Volume{...}\\" 125 MB
-[2021-08-10 17:57:50.549][Debug](,0,default) Cube variant: 0
-[2021-08-10 17:57:50.549][Debug](,0,default) Cubes current content lang: "FRANCAIS"
-[2021-08-10 17:57:50.549][Debug](,0,default) Available content langs in the app folder: ("FRANCAIS")
-[2021-08-10 17:57:50.579][Debug](,0,default) Select page: "Drive Select"
-[2021-08-10 17:58:13.192][Debug](,0,default) Select page: "Ask For Backup"
-[2021-08-10 17:58:19.432][Debug](,0,default) Select page: "Backup Setup"
-[2021-08-10 17:58:23.892][Debug](,0,default) Select page: "Backup Progress"
-[2021-08-10 17:58:48.592][Debug](,0,default) Start backup 111 files from the: "E:/" to: "C:/Users/.../Desktop/Compteuse/JoyeuseCube"
-[2021-08-10 17:58:48.592][Debug](,0,default) Progress: "DRIVE_OP_SAVE" : 0
-[2021-08-10 17:58:48.667][Debug](,0,default) Progress: "DRIVE_OP_SAVE" : 0
-[2021-08-10 17:58:49.079][Debug](,0,default) Progress: "DRIVE_OP_SAVE" : 1
+[Debug](,0,default) App Start
+[Debug](,0,default) ------------------------------------------------------
+[Debug](,0,default) Sys locale language: "fran?ais"  -  "fr"
+[Debug](,0,default) Apply translation file: "joy_upd_fr" Result: true
+[Debug](,0,default) Screen Logical DPI: 96 Scale factor: 1
+[Debug](,0,default) Fw file found: "cube_fw_v5.07.hex"
+[Debug](,0,default) Fw file found: "cube_fw_v5.07.hex"
+[Debug](,0,default) New drive name: "JOYEUSE-507"
+[Debug](,0,default) Choosen fw version: "5.07"
+[Debug](,0,default) New drive name: "JOYEUSE-507"
+[Debug](,0,default) Select page: "Drive Detect"
+[Debug](,0,default) Search for a Joyeuse drive...
+[Debug](,0,default) Stop:  "DRIVE_OP_SEARCH"
+[Debug](,0,default) Progress: "DRIVE_OP_SEARCH" : 100
+[Debug](,0,default) Drive found: "JOYEUSE-AE (E:)" "\\\\?\\Volume{...}\\" 125 MB
+[Debug](,0,default) Cube variant: 0
+[Debug](,0,default) Cubes current content lang: "FRANCAIS"
+[Debug](,0,default) Available content langs in the app folder: ("FRANCAIS")
+[Debug](,0,default) Select page: "Drive Select"
+[Debug](,0,default) Select page: "Ask For Backup"
+[Debug](,0,default) Select page: "Backup Setup"
+[Debug](,0,default) Select page: "Backup Progress"
+[Debug](,0,default) Start backup 111 files from the: "E:/" to: "C:/Users/.../Desktop/Compteuse/JoyeuseCube"
+[Debug](,0,default) Progress: "DRIVE_OP_SAVE" : 0
+[Debug](,0,default) Progress: "DRIVE_OP_SAVE" : 0
+[Debug](,0,default) Progress: "DRIVE_OP_SAVE" : 1
 [...]
-[2021-08-10 18:01:35.099][Debug](,0,default) Progress: "DRIVE_OP_SAVE" : 99
-[2021-08-10 18:01:35.099][Debug](,0,default) Backup of 111 files was successfully done
-[2021-08-10 18:01:35.099][Debug](,0,default) Stop:  "DRIVE_OP_SAVE"
-[2021-08-10 18:01:35.099][Debug](,0,default) Progress: "DRIVE_OP_SAVE" : 100
-[2021-08-10 18:01:42.949][Debug](,0,default) Select page: "Format Progress"
-[2021-08-10 18:01:42.999][Debug](,0,default) Progress: "DRIVE_OP_FORMAT" : 0
-[2021-08-10 18:01:53.448][Debug](,0,default) Drive format finished successfully
-[2021-08-10 18:01:53.449][Debug](,0,default) Stop:  "DRIVE_OP_FORMAT"
-[2021-08-10 18:01:53.450][Debug](,0,default) Progress: "DRIVE_OP_FORMAT" : 100
-[2021-08-10 18:01:53.827][Debug](,0,default) Progress: "UPD_OP_GO_BOOT_MODE" : 100
-[2021-08-10 18:01:53.828][Debug](,0,default) Stop:  "UPD_OP_GO_BOOT_MODE"
-[2021-08-10 18:01:53.829][Debug](,0,default) upgrade.txt file created successfully
-[2021-08-10 18:02:35.044][Debug](,0,default) Start device detection process
-[2021-08-10 18:02:35.044][Debug](,0,default) Select page: "Wait Boot Mode"
-[2021-08-10 18:02:39.334][Debug](,0,default) Progress: "UPD_OP_SEARCH" : 0
-[2021-08-10 18:02:42.746][Debug](,0,default) Progress: "UPD_OP_SEARCH" : 0
-[2021-08-10 18:02:44.968][Debug](,0,default) Progress: "UPD_OP_SEARCH" : 1
-[2021-08-10 18:02:47.068][Debug](,0,default) Progress: "UPD_OP_SEARCH" : 2
-[2021-08-10 18:02:49.259][Debug](,0,default) Progress: "UPD_OP_SEARCH" : 2
-[2021-08-10 18:02:51.558][Debug](,0,default) Progress: "UPD_OP_SEARCH" : 3
-[2021-08-10 18:02:53.740][Debug](,0,default) Progress: "UPD_OP_SEARCH" : 4
-[2021-08-10 18:02:55.839][Debug](,0,default) Progress: "UPD_OP_SEARCH" : 4
-[2021-08-10 18:02:58.133][Debug](,0,default) Progress: "UPD_OP_SEARCH" : 5
-[2021-08-10 18:03:00.235][Debug](,0,default) Progress: "UPD_OP_SEARCH" : 6
-[2021-08-10 18:03:04.428][Debug](,0,default) STM32 USB bootloader device detected
-[2021-08-10 18:03:04.428][Debug](,0,default) Progress: "UPD_OP_SEARCH" : 100
-[2021-08-10 18:03:04.429][Debug](,0,default) Stop:  "UPD_OP_SEARCH"
-[2021-08-10 18:03:09.720][Debug](,0,default) Select page: "Update Progress"
-[2021-08-10 18:03:09.740][Debug](,0,default) Progress: "UPD_OP_UPDATE" : 0
-[2021-08-10 18:03:16.491][Debug](,0,default) PROG DBG:"      -------------------------------------------------------------------\r\n                       STM32CubeProgrammer v2.3.0                  \r\n      -------------------------------------------------------------------\r\n\r\n\r\n\r\nUSB speed   : Full Speed (12MBit/s)\r\nManuf. ID   : STMicroelectronics\r\nProduct ID  : STM32  BOOTLOADER\r\nSN          : ...\r\nFW version  : 0x011a\r\nDevice ID   : 0x...\r\nDevice name : STM32L45x/L46x\r\nFlash size  : 512 KBytes (default)\r\nDevice type : MCU\r\nDevice CPU  : Cortex-M4\r\n\r\n\r\n\r\nMemory Programming ...\r\nOpening and parsing file: cube_fw_v5.07.hex\r\n  File          : cube_fw_v5.07.hex\r\n  Size          : 141646 Bytes\r\n  Address       : 0x08000000 \r\n\r\n\r\nErasing memory corresponding to segment 0:\r\nErasing internal memory sectors [0 69]\r\nerasing sector 0000 @: 0x08000000 done\r\nerasing sector 0001 @: 0x08000800 done\r\nerasing sector 0002 @: 0x08001000 done\r\nerasing sector 0003 @: 0x08001800 done\r\nerasing sector 0004 @: 0x08002000 done\r\nerasing sector 0005 @: 0x08002800 done\r\nerasing sector 0006 @: 0x08003000 done\r\nerasing sector 0007 @: 0x08003800 done\r\nerasing sector 0008 @: 0x08004000 done\r\nerasing sector 0009 @: 0x08004800 done\r\nerasing sector 0010 @: 0x08005000 done\r\nerasing sector 0011 @: 0x08005800 done\r\nerasing sector 0012 @: 0x08006000 done\r\nerasing sector 0013 @: 0x08006800 done\r\nerasing sector 0014 @: 0x08007000 done\r\nerasing sector 0015 @: 0x08007800 done\r\nerasing sector 0016 @: 0x08008000 done\r\nerasing sector 0017 @: 0x08008800 done\r\nerasing sector 0018 @: 0x08009000 done\r\nerasing sector 0019 @: 0x08009800 done\r\nerasing sector 0020 @: 0x0800a000 done\r\nerasing sector 0021 @: 0x0800a800 done\r\nerasing sector 0022 @: 0x0800b000 done\r\nerasing sector 0023 @: 0x0800b800 done\r\nerasing sector 0024 @: 0x0800c000 done\r\nerasing sector 0025 @: 0x0800c800 done\r\nerasing sector 0026 @: 0x0800d000 done\r\nerasing sector 0027 @: 0x0800d800 done\r\nerasing sector 0028 @: 0x0800e000 done\r\nerasing sector 0029 @: 0x0800e800 done\r\nerasing sector 0030 @: 0x0800f000 done\r\nerasing sector 0031 @: 0x0800f800 done\r\nerasing sector 0032 @: 0x08010000 done\r\nerasing sector 0033 @: 0x08010800 done\r\nerasing sector 0034 @: 0x08011000 done\r\nerasing sector 0035 @: 0x08011800 done\r\nerasing sector 0036 @: 0x08012000 done\r\nerasing sector 0037 @: 0x08012800 done\r\nerasing sector 0038 @: 0x08013000 done\r\nerasing sector 0039 @: 0x08013800 done\r\nerasing sector 0040 @: 0x08014000 done\r\nerasing sector 0041 @: 0x08014800 done\r\nerasing sector 0042 @: 0x08015000 done\r\nerasing sector 0043 @: 0x08015800 done\r\nerasing sector 0044 @: 0x08016000 done\r\nerasing sector 0045 @: 0x08016800 done\r\nerasing sector 0046 @: 0x08017000 done\r\nerasing sector 0047 @: 0x08017800 done\r\nerasing sector 0048 @: 0x08018000 done\r\nerasing sector 0049 @: 0x08018800 done\r\nerasing sector 0050 @: 0x08019000 done\r\nerasing sector 0051 @: 0x08019800 done\r\nerasing sector 0052 @: 0x0801a000 done\r\nerasing sector 0053 @: 0x0801a800 done\r\nerasing sector 0054 @: 0x0801b000 done\r\nerasing sector 0055 @: 0x0801b800 done\r\nerasing sector 0056 @: 0x0801c000 done\r\nerasing sector 0057 @: 0x0801c800 done\r\nerasing sector 0058 @: 0x0801d000 done\r\nerasing sector 0059 @: 0x0801d800 done\r\nerasing sector 0060 @: 0x0801e000 done\r\nerasing sector 0061 @: 0x0801e800 done\r\nerasing sector 0062 @: 0x0801f000 done\r\nerasing sector 0063 @: 0x0801f800 done\r\nerasing sector 0064 @: 0x08020000 done\r\nerasing sector 0065 @: 0x08020800 done\r\nerasing sector 0066 @: 0x08021000 done\r\nerasing sector 0067 @: 0x08021800 done\r\nerasing sector 0068 @: 0x08022000 done\r\nerasing sector 0069 @: 0x08022800 done\r\nDownload in Progress:\r\n\r\n\r\nFile download complete\r\nTime elapsed during download operation: 00:00:03.946\r\n\r\n\r\n\r\nVerifying ...\r\n\r\n\r\n\r\n\r\nDownload verified successfully \r\n\r\n\r\n"
-[2021-08-10 18:03:16.492][Debug](,0,default) Firmware update completed successfully
-[2021-08-10 18:03:16.493][Debug](,0,default) Progress: "UPD_OP_UPDATE" : 100
-[2021-08-10 18:03:16.493][Debug](,0,default) Stop:  "UPD_OP_UPDATE"
-[2021-08-10 18:03:22.951][Debug](,0,default) Select page: "Wait Drive Mode"
-[2021-08-10 18:03:23.101][Debug](,0,default) Progress: "DRIVE_OP_WAIT_CONN" : 0
-[2021-08-10 18:03:25.105][Debug](,0,default) Progress: "DRIVE_OP_WAIT_CONN" : 1
-[2021-08-10 18:03:27.108][Debug](,0,default) Progress: "DRIVE_OP_WAIT_CONN" : 3
-[2021-08-10 18:03:29.112][Debug](,0,default) Progress: "DRIVE_OP_WAIT_CONN" : 5
-[2021-08-10 18:03:31.116][Debug](,0,default) Progress: "DRIVE_OP_WAIT_CONN" : 6
-[2021-08-10 18:03:33.121][Debug](,0,default) Progress: "DRIVE_OP_WAIT_CONN" : 8
-[2021-08-10 18:03:35.124][Debug](,0,default) Progress: "DRIVE_OP_WAIT_CONN" : 10
-[2021-08-10 18:03:37.129][Debug](,0,default) Progress: "DRIVE_OP_WAIT_CONN" : 11
-[2021-08-10 18:03:44.157][Debug](,0,default) Stop:  "DRIVE_OP_WAIT_CONN"
-[2021-08-10 18:03:44.158][Debug](,0,default) Progress: "DRIVE_OP_WAIT_CONN" : 100
-[2021-08-10 18:03:44.158][Debug](,0,default) Select page: "Drive Restore"
-[2021-08-10 18:04:00.858][Debug](,0,default) Select page: "Restore Progress"
-[2021-08-10 18:04:00.868][Debug](,0,default) Start restoring the backup content: "C:/Program Files (x86)/Joyeuse/Updater/content/FR"  to: "E:/"
-[2021-08-10 18:04:00.908][Debug](,0,default) Progress: "DRIVE_OP_RESTORE" : 0
-[2021-08-10 18:04:02.718][Debug](,0,default) Progress: "DRIVE_OP_RESTORE" : 0
-[2021-08-10 18:04:03.948][Debug](,0,default) Progress: "DRIVE_OP_RESTORE" : 1
+[Debug](,0,default) Progress: "DRIVE_OP_SAVE" : 99
+[Debug](,0,default) Backup of 111 files was successfully done
+[Debug](,0,default) Stop:  "DRIVE_OP_SAVE"
+[Debug](,0,default) Progress: "DRIVE_OP_SAVE" : 100
+[Debug](,0,default) Select page: "Format Progress"
+[Debug](,0,default) Progress: "DRIVE_OP_FORMAT" : 0
+[Debug](,0,default) Drive format finished successfully
+[Debug](,0,default) Stop:  "DRIVE_OP_FORMAT"
+[Debug](,0,default) Progress: "DRIVE_OP_FORMAT" : 100
+[Debug](,0,default) Progress: "UPD_OP_GO_BOOT_MODE" : 100
+[Debug](,0,default) Stop:  "UPD_OP_GO_BOOT_MODE"
+[Debug](,0,default) upgrade.txt file created successfully
+[Debug](,0,default) Start device detection process
+[Debug](,0,default) Select page: "Wait Boot Mode"
+[Debug](,0,default) Progress: "UPD_OP_SEARCH" : 0
+[Debug](,0,default) Progress: "UPD_OP_SEARCH" : 0
+[Debug](,0,default) Progress: "UPD_OP_SEARCH" : 1
+[Debug](,0,default) Progress: "UPD_OP_SEARCH" : 2
+[Debug](,0,default) Progress: "UPD_OP_SEARCH" : 2
+[Debug](,0,default) Progress: "UPD_OP_SEARCH" : 3
+[Debug](,0,default) Progress: "UPD_OP_SEARCH" : 4
+[Debug](,0,default) Progress: "UPD_OP_SEARCH" : 4
+[Debug](,0,default) Progress: "UPD_OP_SEARCH" : 5
+[Debug](,0,default) Progress: "UPD_OP_SEARCH" : 6
+[Debug](,0,default) STM32 USB bootloader device detected
+[Debug](,0,default) Progress: "UPD_OP_SEARCH" : 100
+[Debug](,0,default) Stop:  "UPD_OP_SEARCH"
+[Debug](,0,default) Select page: "Update Progress"
+[Debug](,0,default) Progress: "UPD_OP_UPDATE" : 0
+[Debug](,0,default) PROG DBG:"      -------------------------------------------------------------------\r\n                       STM32CubeProgrammer v2.3.0                  \r\n      -------------------------------------------------------------------\r\n\r\n\r\n\r\nUSB speed   : Full Speed (12MBit/s)\r\nManuf. ID   : STMicroelectronics\r\nProduct ID  : STM32  BOOTLOADER\r\nSN          : ...\r\nFW version  : 0x011a\r\nDevice ID   : 0x...\r\nDevice name : STM32L45x/L46x\r\nFlash size  : 512 KBytes (default)\r\nDevice type : MCU\r\nDevice CPU  : Cortex-M4\r\n\r\n\r\n\r\nMemory Programming ...\r\nOpening and parsing file: cube_fw_v5.07.hex\r\n  File          : cube_fw_v5.07.hex\r\n  Size          : 141646 Bytes\r\n  Address       : 0x08000000 \r\n\r\n\r\nErasing memory corresponding to segment 0:\r\nErasing internal memory sectors [0 69]\r\nerasing sector 0000 @: 0x08000000 done\r\nerasing sector 0001 @: 0x08000800 done\r\nerasing sector 0002 @: 0x08001000 done\r\nerasing sector 0003 @: 0x08001800 done\r\nerasing sector 0004 @: 0x08002000 done\r\nerasing sector 0005 @: 0x08002800 done\r\nerasing sector 0006 @: 0x08003000 done\r\nerasing sector 0007 @: 0x08003800 done\r\nerasing sector 0008 @: 0x08004000 done\r\nerasing sector 0009 @: 0x08004800 done\r\nerasing sector 0010 @: 0x08005000 done\r\nerasing sector 0011 @: 0x08005800 done\r\nerasing sector 0012 @: 0x08006000 done\r\nerasing sector 0013 @: 0x08006800 done\r\nerasing sector 0014 @: 0x08007000 done\r\nerasing sector 0015 @: 0x08007800 done\r\nerasing sector 0016 @: 0x08008000 done\r\nerasing sector 0017 @: 0x08008800 done\r\nerasing sector 0018 @: 0x08009000 done\r\nerasing sector 0019 @: 0x08009800 done\r\nerasing sector 0020 @: 0x0800a000 done\r\nerasing sector 0021 @: 0x0800a800 done\r\nerasing sector 0022 @: 0x0800b000 done\r\nerasing sector 0023 @: 0x0800b800 done\r\nerasing sector 0024 @: 0x0800c000 done\r\nerasing sector 0025 @: 0x0800c800 done\r\nerasing sector 0026 @: 0x0800d000 done\r\nerasing sector 0027 @: 0x0800d800 done\r\nerasing sector 0028 @: 0x0800e000 done\r\nerasing sector 0029 @: 0x0800e800 done\r\nerasing sector 0030 @: 0x0800f000 done\r\nerasing sector 0031 @: 0x0800f800 done\r\nerasing sector 0032 @: 0x08010000 done\r\nerasing sector 0033 @: 0x08010800 done\r\nerasing sector 0034 @: 0x08011000 done\r\nerasing sector 0035 @: 0x08011800 done\r\nerasing sector 0036 @: 0x08012000 done\r\nerasing sector 0037 @: 0x08012800 done\r\nerasing sector 0038 @: 0x08013000 done\r\nerasing sector 0039 @: 0x08013800 done\r\nerasing sector 0040 @: 0x08014000 done\r\nerasing sector 0041 @: 0x08014800 done\r\nerasing sector 0042 @: 0x08015000 done\r\nerasing sector 0043 @: 0x08015800 done\r\nerasing sector 0044 @: 0x08016000 done\r\nerasing sector 0045 @: 0x08016800 done\r\nerasing sector 0046 @: 0x08017000 done\r\nerasing sector 0047 @: 0x08017800 done\r\nerasing sector 0048 @: 0x08018000 done\r\nerasing sector 0049 @: 0x08018800 done\r\nerasing sector 0050 @: 0x08019000 done\r\nerasing sector 0051 @: 0x08019800 done\r\nerasing sector 0052 @: 0x0801a000 done\r\nerasing sector 0053 @: 0x0801a800 done\r\nerasing sector 0054 @: 0x0801b000 done\r\nerasing sector 0055 @: 0x0801b800 done\r\nerasing sector 0056 @: 0x0801c000 done\r\nerasing sector 0057 @: 0x0801c800 done\r\nerasing sector 0058 @: 0x0801d000 done\r\nerasing sector 0059 @: 0x0801d800 done\r\nerasing sector 0060 @: 0x0801e000 done\r\nerasing sector 0061 @: 0x0801e800 done\r\nerasing sector 0062 @: 0x0801f000 done\r\nerasing sector 0063 @: 0x0801f800 done\r\nerasing sector 0064 @: 0x08020000 done\r\nerasing sector 0065 @: 0x08020800 done\r\nerasing sector 0066 @: 0x08021000 done\r\nerasing sector 0067 @: 0x08021800 done\r\nerasing sector 0068 @: 0x08022000 done\r\nerasing sector 0069 @: 0x08022800 done\r\nDownload in Progress:\r\n\r\n\r\nFile download complete\r\nTime elapsed during download operation: 00:00:03.946\r\n\r\n\r\n\r\nVerifying ...\r\n\r\n\r\n\r\n\r\nDownload verified successfully \r\n\r\n\r\n"
+[Debug](,0,default) Firmware update completed successfully
+[Debug](,0,default) Progress: "UPD_OP_UPDATE" : 100
+[Debug](,0,default) Stop:  "UPD_OP_UPDATE"
+[Debug](,0,default) Select page: "Wait Drive Mode"
+[Debug](,0,default) Progress: "DRIVE_OP_WAIT_CONN" : 0
+[Debug](,0,default) Progress: "DRIVE_OP_WAIT_CONN" : 1
+[Debug](,0,default) Progress: "DRIVE_OP_WAIT_CONN" : 3
+[Debug](,0,default) Progress: "DRIVE_OP_WAIT_CONN" : 5
+[Debug](,0,default) Progress: "DRIVE_OP_WAIT_CONN" : 6
+[Debug](,0,default) Progress: "DRIVE_OP_WAIT_CONN" : 8
+[Debug](,0,default) Progress: "DRIVE_OP_WAIT_CONN" : 10
+[Debug](,0,default) Progress: "DRIVE_OP_WAIT_CONN" : 11
+[Debug](,0,default) Stop:  "DRIVE_OP_WAIT_CONN"
+[Debug](,0,default) Progress: "DRIVE_OP_WAIT_CONN" : 100
+[Debug](,0,default) Select page: "Drive Restore"
+[Debug](,0,default) Select page: "Restore Progress"
+[Debug](,0,default) Start restoring the backup content: "C:/Program Files (x86)/Joyeuse/Updater/content/FR"  to: "E:/"
+[Debug](,0,default) Progress: "DRIVE_OP_RESTORE" : 0
+[Debug](,0,default) Progress: "DRIVE_OP_RESTORE" : 0
+[Debug](,0,default) Progress: "DRIVE_OP_RESTORE" : 1
 [...]
-[2021-08-10 18:09:24.039][Debug](,0,default) Progress: "DRIVE_OP_RESTORE" : 99
-[2021-08-10 18:09:24.639][Debug](,0,default) Stop:  "DRIVE_OP_RESTORE"
-[2021-08-10 18:09:24.639][Debug](,0,default) Progress: "DRIVE_OP_RESTORE" : 100
-[2021-08-10 18:09:24.639][Debug](,0,default) Restoring successfully done
-[2021-08-10 18:09:24.639][Debug](,0,default) Stop:  "DRIVE_OP_RESTORE"
-[2021-08-10 18:09:24.639][Debug](,0,default) Progress: "DRIVE_OP_RESTORE" : 100
-[2021-08-10 18:09:24.639][Debug](,0,default) Select page: "Finish"
-[2021-08-10 18:09:24.639][Debug](,0,default) Select page: "Finish"
+[Debug](,0,default) Progress: "DRIVE_OP_RESTORE" : 99
+[Debug](,0,default) Stop:  "DRIVE_OP_RESTORE"
+[Debug](,0,default) Progress: "DRIVE_OP_RESTORE" : 100
+[Debug](,0,default) Restoring successfully done
+[Debug](,0,default) Stop:  "DRIVE_OP_RESTORE"
+[Debug](,0,default) Progress: "DRIVE_OP_RESTORE" : 100
+[Debug](,0,default) Select page: "Finish"
+[Debug](,0,default) Select page: "Finish"
