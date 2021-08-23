@@ -113,7 +113,10 @@ Found DFU: [0483:df11] ver=2200, devnum=6, cfg=1, intf=0, path="1-1", alt=0, nam
 ```
 
 Problème, après flashage, j'ai débranché la conteuse (en espérant qu'elle redémarre), mais maintenant, plus rien...
-Même quand je la branche, dmesg n'affiche rien...
+Même quand je la branche, dmesg n'affiche rien... Grosse frayeur !
+Après redémarrage le l'ordinateur et un peu de patience, finalement, la compteuse bippe (ti, ti, ti, ta, ta, taaaa) quand je la connecte et s'affiche comme un périphérique de stockage sur mon ordinateur.
+Donc, a priori, le flash c'est déroulé sans souci.
+Reste à voir comment automatiser ça sous Wine (détection de la compteuse en mode bootloader) pour réussir un processus complet, ou comment utiliser dfu-util pour le flash sous Linux, parce qu'il est bien plus simple à installer que STM32CubeProg.
 
 ### Native Linux
 
