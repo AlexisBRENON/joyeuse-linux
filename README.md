@@ -69,11 +69,51 @@ J'ai essayé de modifier le script pour supprimer l'appel à la commande `format
 Mais le processus de mise à jour est quand échoue quand même, avec une erreur 006 (voir le [log](logs/wine_no_format_failure.log)).
 Cette erreur doit venir d'une vérification faite après le formatage (système de fichier vide, label de la partition, autre chose ?) qui échoue, puisque le formatage n'a pas vraiment eu lieu.
 
-Ma prochaine étape va être de modifier l'appel à `format`, en le remplaçant par une commande similaire à la commande UNIX `rm` (`rmdir` a priori).
-Une éventuelle vérification que le système de fichier est vide ne devrait donc plus poser de problème.
+En supprimant manuellement la totalité du contenu de la conteuse, l'étape de formatage fonctionne.
+Il doit donc être possible de remplacer l'appel à `format` par une commande similaire à la commande UNIX `rm` (`rmdir` a priori).
 
-En cas d'échec, j'essaierais de modifier le label du périphérique qui apparait comme `"NO NAME (D:)" "\\\\?\\Volume{...}\\"` avec Wine, alors que sur une installation native le nom "Joyeuse" est présent: `"JOYEUSE-AE (E:)" "\\\\?\\Volume{...}\\"`.
-Mais le nommage de disques avec wine utilise un fichier caché à la racine du-dit disque, ce qui empêche d'avoir un système de fichier vide (https://bugs.winehq.org/show_bug.cgi?id=13273).
+Suite à ce formattage, un fichier vide `upgrade.txt` est créé à la racine du système de fichier.
+Je suppose que ce fichier permet de passer en mode "bootloader".
+
+Après cette étape, la versionneuse demande de débrancher puis rebrancher la conteuse.
+Après rebranchement, `dmesg` détecte la connexion du périphérique en mode bootloader, puis plus rien...
+```
+[10558.732861] usb 1-1: new full-speed USB device number 6 using xhci_hcd
+[10558.880798] usb 1-1: New USB device found, idVendor=0483, idProduct=df11, bcdDevice=22.00
+[10558.880812] usb 1-1: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[10558.880818] usb 1-1: Product: STM32  BOOTLOADER
+[10558.880822] usb 1-1: Manufacturer: STMicroelectronics
+[10558.880826] usb 1-1: SerialNumber: 2056316B5652
+```
+En ajoutant une règle udev, on peut alors créer un périphérique pour la programmation: `SUBSYSTEM=="usb", ATTR{idVendor}=="0483", ATTR{idProduct}=="df11", SYMLINK+="joyeuse/bootloader%n", MODE="0666"`
+Malgré la création d'un lien symbolique de `~/.wine/dosdevices/com1` vers `/dev/joyeuse/bootloader1`, la détection du bootloader par la versionneuse échoue:
+```
+[Warning](,0,default) No valid bootloder USB device detected
+[Debug](,0,default) Progress: "UPD_OP_SEARCH" : -1
+[Debug](,0,default) Stop:  "UPD_OP_SEARCH"
+[Critical](,0,default) Boot dev detection timeout expired
+[Debug](,0,default) Select page: "Error"
+[Critical](,0,default) Error: "009"
+```
+En revanche, la détection via `dfu-util` ou `stm32CubeProg` sous Linux fonctionne !!!
+J'ai même réussi à flasher avec `stm32CubeProg`.
+```
+$ dfu-util -l
+dfu-util 0.10
+
+Copyright 2005-2009 Weston Schmidt, Harald Welte and OpenMoko Inc.
+Copyright 2010-2020 Tormod Volden and Stefan Schmidt
+This program is Free Software and has ABSOLUTELY NO WARRANTY
+Please report bugs to http://sourceforge.net/p/dfu-util/tickets/
+
+Found DFU: [0483:df11] ver=2200, devnum=6, cfg=1, intf=0, path="1-1", alt=3, name="@Device Feature/0xFFFF0000/01*004 e", serial="2056316B5652"
+Found DFU: [0483:df11] ver=2200, devnum=6, cfg=1, intf=0, path="1-1", alt=2, name="@OTP Memory /0x1FFF7000/01*0001Ke", serial="2056316B5652"
+Found DFU: [0483:df11] ver=2200, devnum=6, cfg=1, intf=0, path="1-1", alt=1, name="@Option Bytes  /0x1FFF7800/01*040 e", serial="2056316B5652"
+Found DFU: [0483:df11] ver=2200, devnum=6, cfg=1, intf=0, path="1-1", alt=0, name="@Internal Flash  /0x08000000/0256*0002Kg", serial="2056316B5652"
+```
+
+Problème, après flashage, j'ai débranché la conteuse (en espérant qu'elle redémarre), mais maintenant, plus rien...
+Même quand je la branche, dmesg n'affiche rien...
 
 ### Native Linux
 
@@ -101,3 +141,9 @@ Finalement, pour l'étape 8 nous sommes de retour sur de la manipulation de fich
 J'ai donc commencé à implémenter un [script](update.sh) pour réaliser ces différentes étapes.
 Il n'est pas encore complet, et les fonctions complètes n'ont pas encore été testées.
 Les avis et commentaires sont les bienvenus.
+
+
+
+
+
+
