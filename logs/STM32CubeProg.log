@@ -1,0 +1,112 @@
+      -------------------------------------------------------------------
+                             STM32CubeProgrammer v2.3.0                  
+      -------------------------------------------------------------------
+
+
+
+USB speed   : Full Speed (12MBit/s)
+Manuf. ID   : STMicroelectronics
+Product ID  : STM32  BOOTLOADER
+SN          : ...
+FW version  : 0x011a
+Device ID   : 0x...
+Device name : STM32L45x/L46x
+Flash size  : 512 KBytes (default)
+Device type : MCU
+Device CPU  : Cortex-M4
+
+
+
+Memory Programming ...
+Opening and parsing file: cube_fw_v5.07.hex
+  File          : cube_fw_v5.07.hex
+  Size          : 141646 Bytes
+  Address       : 0x08000000 
+
+
+Erasing memory corresponding to segment 0:
+Erasing internal memory sectors [0 69]
+erasing sector 0000 @: 0x08000000 done
+erasing sector 0001 @: 0x08000800 done
+erasing sector 0002 @: 0x08001000 done
+erasing sector 0003 @: 0x08001800 done
+erasing sector 0004 @: 0x08002000 done
+erasing sector 0005 @: 0x08002800 done
+erasing sector 0006 @: 0x08003000 done
+erasing sector 0007 @: 0x08003800 done
+erasing sector 0008 @: 0x08004000 done
+erasing sector 0009 @: 0x08004800 done
+erasing sector 0010 @: 0x08005000 done
+erasing sector 0011 @: 0x08005800 done
+erasing sector 0012 @: 0x08006000 done
+erasing sector 0013 @: 0x08006800 done
+erasing sector 0014 @: 0x08007000 done
+erasing sector 0015 @: 0x08007800 done
+erasing sector 0016 @: 0x08008000 done
+erasing sector 0017 @: 0x08008800 done
+erasing sector 0018 @: 0x08009000 done
+erasing sector 0019 @: 0x08009800 done
+erasing sector 0020 @: 0x0800a000 done
+erasing sector 0021 @: 0x0800a800 done
+erasing sector 0022 @: 0x0800b000 done
+erasing sector 0023 @: 0x0800b800 done
+erasing sector 0024 @: 0x0800c000 done
+erasing sector 0025 @: 0x0800c800 done
+erasing sector 0026 @: 0x0800d000 done
+erasing sector 0027 @: 0x0800d800 done
+erasing sector 0028 @: 0x0800e000 done
+erasing sector 0029 @: 0x0800e800 done
+erasing sector 0030 @: 0x0800f000 done
+erasing sector 0031 @: 0x0800f800 done
+erasing sector 0032 @: 0x08010000 done
+erasing sector 0033 @: 0x08010800 done
+erasing sector 0034 @: 0x08011000 done
+erasing sector 0035 @: 0x08011800 done
+erasing sector 0036 @: 0x08012000 done
+erasing sector 0037 @: 0x08012800 done
+erasing sector 0038 @: 0x08013000 done
+erasing sector 0039 @: 0x08013800 done
+erasing sector 0040 @: 0x08014000 done
+erasing sector 0041 @: 0x08014800 done
+erasing sector 0042 @: 0x08015000 done
+erasing sector 0043 @: 0x08015800 done
+erasing sector 0044 @: 0x08016000 done
+erasing sector 0045 @: 0x08016800 done
+erasing sector 0046 @: 0x08017000 done
+erasing sector 0047 @: 0x08017800 done
+erasing sector 0048 @: 0x08018000 done
+erasing sector 0049 @: 0x08018800 done
+erasing sector 0050 @: 0x08019000 done
+erasing sector 0051 @: 0x08019800 done
+erasing sector 0052 @: 0x0801a000 done
+erasing sector 0053 @: 0x0801a800 done
+erasing sector 0054 @: 0x0801b000 done
+erasing sector 0055 @: 0x0801b800 done
+erasing sector 0056 @: 0x0801c000 done
+erasing sector 0057 @: 0x0801c800 done
+erasing sector 0058 @: 0x0801d000 done
+erasing sector 0059 @: 0x0801d800 done
+erasing sector 0060 @: 0x0801e000 done
+erasing sector 0061 @: 0x0801e800 done
+erasing sector 0062 @: 0x0801f000 done
+erasing sector 0063 @: 0x0801f800 done
+erasing sector 0064 @: 0x08020000 done
+erasing sector 0065 @: 0x08020800 done
+erasing sector 0066 @: 0x08021000 done
+erasing sector 0067 @: 0x08021800 done
+erasing sector 0068 @: 0x08022000 done
+erasing sector 0069 @: 0x08022800 done
+Download in Progress:
+
+
+File download complete
+Time elapsed during download operation: 00:00:03.946
+
+
+
+Verifying ...
+
+
+
+
+Download verified successfully

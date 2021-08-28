@@ -146,6 +146,13 @@ Il n'est pas encore complet, et les fonctions complètes n'ont pas encore été 
 Les avis et commentaires sont les bienvenus.
 
 
+### Flashing info
+
+D'après [STM32CubeProg](logs/STM32CubeProg.log):
+
+* le fichier `cube_fw_v5.07.hex` est un fichier au format intel HEX décrivant un programme de 141646 (`0x2294E`) octets
+* l'écriture commence à l'adresse `0x08000000`
+* 70 secteurs (0 - 69) de 2048 bytes (`0x800`) sont écrasés (=> `70 * 2048 = 143360`)
 
 
 
