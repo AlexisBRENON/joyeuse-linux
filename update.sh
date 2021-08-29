@@ -1,27 +1,18 @@
 #!/usr/bin/env bash
 
-set -eux
+set -eu
 
-# Brides de scripts pour faire une versionneuse pour Linux.
 state_folder="${XDG_STATE_HOME:-${HOME}/.local/state}/Joyeuse/"
 data_folder="${XDG_DATA_HOME:-${HOME}/.local/share}/Joyeuse/"
 tmp_folder="/tmp/joyeuse"
 mkdir -p "${state_folder}" "${data_folder}" "${tmp_folder}"
 
-
 drive_search() {
-  for MOUNT_POINT in $(mount -l -t vfat | cut -d' ' -f3); do
-    if [ -d "${MOUNT_POINT}/Secrets" ]; then
-      for SECRET_FILE in "${MOUNT_POINT}/Secrets/"*; do
-        case "$(basename "${SECRET_FILE}")" in
-        JOY_*)
-          echo "${MOUNT_POINT}"
-          exit 0
-          ;;
-        *) ;;
-
-        esac
-      done
+  for device in $(findmnt --types vfat --output SOURCE --noheadings); do
+    dev_ids="$(udevadm info "${device}" | grep -e ID_VENDOR_ID -e ID_MODEL_ID | cut -d'=' -f2 | paste -sd':')"
+    if [ "${dev_ids}" = "0483:572a" ]; then
+      findmnt --source "${device}" --output TARGET --noheadings
+      exit 0
     fi
   done
   exit 1
@@ -55,6 +46,7 @@ drive_restore() {
     --compress --archive \
     --hard-links --one-file-system \
     "${backup_path}" "${MOUNT_POINT}/"
+  rm -vfr "${backup_path}"
 }
 
 drive_format() {
@@ -85,9 +77,8 @@ go_boot_mode() {
 dfu_search() {
   dfu-util -w -d 0483:df11 -a 0 -s 0x08000000:4 -U /dev/null >/dev/null &
   waiting_pid=$!
-  echo "Waiting bootloader to be detected..." >&2
   start_time=$(date +%s)
-  while [[ $(( $(date +%s) - start_time )) -lt 120 ]]; do
+  while [[ $(($(date +%s) - start_time)) -lt 120 ]]; do
     sleep 2
     if ps ${waiting_pid}; then
       exit 0 # dfu-util detected device
@@ -107,7 +98,7 @@ dfu_update() {
 }
 
 main() {
-  echo "$$" > "${state_folder}/pid"
+  echo "$$" >"${state_folder}/pid"
 
   echo "Search for a Joyeuse drive..."
   mount_point="$(drive_search)"
@@ -126,10 +117,19 @@ main() {
   echo "upgrade.txt file created successfully"
 
   echo "Unplug (wait for sound (tu-di-tu-duu) and re-plug the device..."
+
+  echo "Start device detection process"
   dfu_search
+  echo "STM32 USB bootloader device detected"
+
   dfu_update
-  #  mount_point="$(drive_wait_connection)"
-  #  drive_restore "${mount_point}" "${backup_path}"
+  echo "Firmware update completed successfully"
+
+  echo "Unplug and re-plug the device..."
+  mount_point="$(drive_wait_connection)"
+  echo "Start restoring the backup content: \"${backup_path}\" to \"${mount_point}\""
+  drive_restore "${mount_point}" "${backup_path}"
+  echo "Restoring successfully done"
 }
 
 main
