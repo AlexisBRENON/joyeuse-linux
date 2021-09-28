@@ -20,7 +20,10 @@ export JOY_UPD_BOOT_FAIL="Unable to detect bootloader... Aborting"
 export JOY_UPD_BOOT_FOUND="STM32 USB bootloader device detected"
 
 export JOY_UPD_UPDATE_DONE="Firmware update completed successfully"
-export JOY_UPD_UPDATE_REPLUG="Unplug and re-plug the device \(tu-tu-tu-ti-tu-tuu\)..."
+export JOY_UPD_UPDATE_REPLUG="Unplug, re-plug \(tu-tu-tu-ti-tu-tuu\) and mount the device..."
 
 export JOY_UPD_RESTORE_START='Start restoring the backup content: \"${1}\" to \"${2}\"'
 export JOY_UPD_RESTORE_DONE="Restoring successfully done"
+
+export JOY_UPD_VERSION_START='Start updating version informations'
+export JOY_UPD_VERSION_DONE="Version informations updated successfully"

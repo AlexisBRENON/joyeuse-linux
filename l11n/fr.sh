@@ -20,7 +20,10 @@ export JOY_UPD_BOOT_FAIL="Impossible de trouver un périphérique programmable..
 export JOY_UPD_BOOT_FOUND="Périphérique programmable STM32 USB trouvé"
 
 export JOY_UPD_UPDATE_DONE="Mise à jour du microcode réalisée avec succès"
-export JOY_UPD_UPDATE_REPLUG="Débranchez et rebranchez le périphérique \(tu-tu-tu-ti-tu-tuu\)..."
+export JOY_UPD_UPDATE_REPLUG="Débranchez, rebranchez \(tu-tu-tu-ti-tu-tuu\) et montez le périphérique..."
 
 export JOY_UPD_RESTORE_START='Début de la restauration des données de \"${1}\" vers \"${2}\"'
 export JOY_UPD_RESTORE_DONE="Restauration réalisée avec succès"
+
+export JOY_UPD_VERSION_START='Début de la mise à jour des informations de version'
+export JOY_UPD_VERSION_DONE="Informations de versions mise à jour avec succès"

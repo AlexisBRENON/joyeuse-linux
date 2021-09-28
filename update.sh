@@ -4,9 +4,8 @@ set -eu
 if [ -n "${JOY_UPD_DEBUG:-""}" ]; then set -x; fi
 
 state_folder="${XDG_STATE_HOME:-${HOME}/.local/state}/Joyeuse/"
-data_folder="${XDG_DATA_HOME:-${HOME}/.local/share}/Joyeuse/"
 tmp_folder="/tmp/joyeuse"
-mkdir -p "${state_folder}" "${data_folder}" "${tmp_folder}"
+mkdir -p "${state_folder}" "${tmp_folder}"
 
 localize() {
   # Get user locale
@@ -32,28 +31,38 @@ log() {
   eval echo "${template}"
 }
 
-get_fw() {
+download_updater() {
   # Download Mac updater from joyeuse website
   if [ ! -e "${tmp_folder}/updater.dmg" ]; then
     curl -L https://club.joyeuse.io/files/uploads/storyteller_updater/0001/01/joyeuse_updater_mac_std_1.0.8_fr.dmg > ${tmp_folder}/updater.dmg
   fi
-  # Find the firmware file in the archive
-  firmware_file="$(7z l ${tmp_folder}/updater.dmg | grep -e '.hex$' | rev | cut -d' ' -f1 | rev)"
-  if [ -n "${firmware_file}" ]; then
-    hex_file="$(basename "$firmware_file")"
-    # Extract the firmware file from the archive
-    if [ ! -e "${tmp_folder}/${hex_file}" ]; then
-      7z e -o"${tmp_folder}" "${tmp_folder}/updater.dmg" "${firmware_file}" >/dev/null
+}
+
+extract_file_from_updater() {
+  file_glob="$1"
+  zipped_file_path="$(7z l ${tmp_folder}/updater.dmg | grep -e "${file_glob}" | rev | cut -d' ' -f1 | rev)"
+  if [ -n "${zipped_file_path}" ]; then
+    resulting_file="$(basename "${zipped_file_path}")"
+    if [ ! -e "${tmp_folder}/${resulting_file}" ]; then
+      7z e -o"${tmp_folder}" "${tmp_folder}/updater.dmg" "${zipped_file_path}" >/dev/null
     fi
-    bin_file="${hex_file/.hex/.bin}"
-    # Convert hex file to bin (for dfu-util usage) filling gap with FF bytes
-    objcopy --input-target=ihex --output-target=binary --gap-fill=0xFF \
-        "${tmp_folder}/${hex_file}" "${tmp_folder}/${bin_file}"
-    echo "${tmp_folder}/${bin_file}"
-  else
-    log "${JOY_UPD_FW_FAIL}" >&2
-    return 1
+    if [ -e "${tmp_folder}/${resulting_file}" ]; then
+      echo "${tmp_folder}/${resulting_file}"
+      return 0
+    fi
   fi
+  return 1
+}
+
+get_fw() {
+  download_updater
+  # Find the firmware file in the archive
+  hex_file=$(extract_file_from_updater '.hex$')
+  bin_file="${hex_file/.hex/.bin}"
+  # Convert hex file to bin (for dfu-util usage) filling gap with FF bytes
+  objcopy --input-target=ihex --output-target=binary --gap-fill=0xFF \
+        "${hex_file}" "${bin_file}"
+  echo "${bin_file}"
 }
 
 drive_search() {
@@ -119,11 +128,12 @@ drive_format() {
 drive_wait_connection() {
   i=0
   while [ "$i" -lt 120 ]; do
-    mount_point=$(drive_search)
+    mount_point=$(drive_search 2>/dev/null)
     if [ -n "${mount_point}" ]; then
       echo "${mount_point}"
       return 0
     fi
+    echo -n "." >&2
     i=$((i + 1))
     sleep 1
   done
@@ -168,6 +178,33 @@ dfu_update() {
   set +x
 }
 
+update_secrets() {
+  mount_point="$1"
+  download_updater
+  for F in 'Secrets/SETTINGS.txt' 'Secrets/V5.txt'; do
+    file=$(extract_file_from_updater "$F")
+    cp --force --backup=simple --suffix=".bak" "${file}" "${mount_point}/${F}"
+  done
+  echo "" > "${mount_point}/VERSION_V5.07"
+
+  serial_number="$(basename "$(ls -1 "${mount_point}/Secrets/JOY_"*)")"
+  cat > "${tmp_folder}/info.js" <<EOJSON
+var info = {
+ VERSION: 'V05.07',
+ SERIAL_NUMBER: '${serial_number}',
+ BABY_MODE: 'N',
+ LEGACY_HW: 'N',
+ BILINGUAL_MODE: 'N',
+ FR: 'Y',
+ EN: 'N',
+ DE: 'N',
+ IT: 'N',
+ INTERNATIONAL_MODE: 'N'
+};
+EOJSON
+  cp --force --backup=simple --suffix=".bak" "${tmp_folder}/info.js" "${mount_point}/Secrets/info.js"
+}
+
 main() {
   localize
 
@@ -199,12 +236,17 @@ main() {
 
   dfu_update "${firmware_file}"
   log "${JOY_UPD_UPDATE_DONE}"
-  log "${JOY_UPD_UPDATE_REPLUG}"
 
+  log "${JOY_UPD_UPDATE_REPLUG}"
   mount_point="$(drive_wait_connection)"
+
   log "${JOY_UPD_RESTORE_START}" "${backup_path}" "${mount_point}"
   drive_restore "${mount_point}" "${backup_path}"
   log "${JOY_UPD_RESTORE_DONE}"
+
+  log "${JOY_UPD_VERSION_START}"
+  update_secrets "${mount_point}"
+  log "${JOY_UPD_VERSION_DONE}"
 }
 
 main
