@@ -212,46 +212,69 @@ EOJSON
 
 main() {
   localize
+  steps="${1:-YYYYYYYYY}"
 
-  log "${JOY_UPD_FW_START}"
-  firmware_file=$(get_fw)
-  log "${JOY_UPD_FW_DONE}" "${firmware_file}"
+  if [ "${steps:0:1}" = 'Y'  ]; then
+    log "${JOY_UPD_FW_START}"
+    firmware_file=$(get_fw)
+    log "${JOY_UPD_FW_DONE}" "${firmware_file}"
+  fi
 
-  log "${JOY_UPD_SEARCH_START}"
-  mount_point="$(drive_search)"
-  log "${JOY_UPD_SEARCH_DONE}" "${mount_point}"
-  df -h "${mount_point}"
+  if [ "${steps:1:1}" = 'Y'  ]; then
+    log "${JOY_UPD_SEARCH_START}"
+    mount_point="$(drive_search)"
+    log "${JOY_UPD_SEARCH_DONE}" "${mount_point}"
+    df -h "${mount_point}"
+  fi
 
-  backup_path="$(get_backup_path "${mount_point}")"
-  log "${JOY_UPD_BAK_START}" "${mount_point}" "${backup_path}"
-  drive_save "${mount_point}" "${backup_path}"
-  log "${JOY_UPD_BAK_DONE}"
+  if [ "${steps:2:1}" = 'Y'  ]; then
+    backup_path="$(get_backup_path "${mount_point}")"
+    log "${JOY_UPD_BAK_START}" "${mount_point}" "${backup_path}"
+    drive_save "${mount_point}" "${backup_path}"
+    log "${JOY_UPD_BAK_DONE}"
+  else
+    backup_path="$(ls -d --time=birth "${state_folder}"/backups/* | head -n1)/"
+  fi
 
-  mount_point="$(drive_format "${mount_point}")"
-  log "${JOY_UPD_FORMAT_DONE}"
+  if [ "${steps:3:1}" = 'Y'  ]; then
+    mount_point="$(drive_format "${mount_point}")"
+    log "${JOY_UPD_FORMAT_DONE}"
+  fi
 
-  go_boot_mode "${mount_point}"
-  log "${JOY_UPD_BOOT_UPGRADE}"
+  if [ "${steps:4:1}" = 'Y'  ]; then
+    go_boot_mode "${mount_point}"
+    log "${JOY_UPD_BOOT_UPGRADE}"
 
-  log "${JOY_UPD_BOOT_REPLUG}"
+    log "${JOY_UPD_BOOT_REPLUG}"
+  fi
 
-  log "${JOY_UPD_BOOT_DETECT}"
-  dfu_search
-  log "${JOY_UPD_BOOT_FOUND}"
+  if [ "${steps:5:1}" = 'Y'  ]; then
+    log "${JOY_UPD_BOOT_DETECT}"
+    dfu_search
+    log "${JOY_UPD_BOOT_FOUND}"
+  fi
 
-  dfu_update "${firmware_file}"
-  log "${JOY_UPD_UPDATE_DONE}"
+  if [ "${steps:6:1}" = 'Y'  ]; then
+    dfu_update "${firmware_file}"
+    log "${JOY_UPD_UPDATE_DONE}"
+  fi
 
-  log "${JOY_UPD_UPDATE_REPLUG}"
-  mount_point="$(drive_wait_connection)"
+  if [ "${steps:7:1}" = 'Y'  ]; then
+    log "${JOY_UPD_UPDATE_REPLUG}"
+    mount_point="$(drive_wait_connection)"
+  fi
 
-  log "${JOY_UPD_RESTORE_START}" "${backup_path}" "${mount_point}"
-  drive_restore "${mount_point}" "${backup_path}"
-  log "${JOY_UPD_RESTORE_DONE}"
+  if [ "${steps:8:1}" = 'Y'  ]; then
+    log "${JOY_UPD_RESTORE_START}" "${backup_path}" "${mount_point}"
+    drive_restore "${mount_point}" "${backup_path}"
+    log "${JOY_UPD_RESTORE_DONE}"
+  fi
 
-  log "${JOY_UPD_VERSION_START}"
-  update_secrets "${mount_point}"
-  log "${JOY_UPD_VERSION_DONE}"
+  if [ "${steps:9:1}" = 'Y'  ]; then
+    log "${JOY_UPD_VERSION_START}"
+    update_secrets "${mount_point}"
+    log "${JOY_UPD_VERSION_DONE}"
+  fi
 }
 
-main
+main "$@"
