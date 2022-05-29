@@ -150,6 +150,7 @@ go_boot_mode() {
 
 dfu_search() {
   # Wait for the expected device to show up
+  date >> "${state_folder}/dfu_search.log"
   dfu-util -w -d 0483:df11 -a 0 -s 0x08000000:4 -U "${tmp_folder}/dfu_search" >> "${state_folder}/dfu_search.log" &
   waiting_pid=$!
   start_time=$(date +%s)
@@ -174,6 +175,7 @@ dfu_update() {
   file_size="$(stat --printf="%s" "${firmware_file}")"
   # Abort if file size it too big for board
   if [ "${file_size}" -gt 524288 ]; then
+    log "${JOY_UPD_SEARCH_FAIL}" >&2
     return 1
   fi
   set -x

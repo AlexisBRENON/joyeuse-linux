@@ -19,6 +19,7 @@ export JOY_UPD_BOOT_DETECT="Recherche du périphérique en mode programmable"
 export JOY_UPD_BOOT_FAIL="Impossible de trouver un périphérique programmable..."
 export JOY_UPD_BOOT_FOUND="Périphérique programmable STM32 USB trouvé"
 
+export JOY_UPD_UPDATE_FAIL_FILE_SIZE="Fichier de microcode trop volumineux pour votre périphérique"
 export JOY_UPD_UPDATE_DONE="Mise à jour du microcode réalisée avec succès"
 export JOY_UPD_UPDATE_REPLUG="Débranchez, rebranchez \(tu-tu-tu-ti-tu-tuu\) et montez le périphérique..."
 

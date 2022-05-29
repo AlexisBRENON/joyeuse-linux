@@ -19,6 +19,7 @@ export JOY_UPD_BOOT_DETECT="Start device detection process"
 export JOY_UPD_BOOT_FAIL="Unable to detect bootloader... Aborting"
 export JOY_UPD_BOOT_FOUND="STM32 USB bootloader device detected"
 
+export JOY_UPD_UPDATE_FAIL_FILE_SIZE="Firware file size too big for your device"
 export JOY_UPD_UPDATE_DONE="Firmware update completed successfully"
 export JOY_UPD_UPDATE_REPLUG="Unplug, re-plug \(tu-tu-tu-ti-tu-tuu\) and mount the device..."
 
