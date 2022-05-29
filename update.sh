@@ -4,6 +4,7 @@ set -eu
 if [ -n "${JOY_UPD_DEBUG:-""}" ]; then set -x; fi
 
 JOY_VERSION="V05.09"
+JOY_VERSION_FILE="VERSION_V5.09"
 JOY_FW_DL_URL="https://club.joyeuse.io/files/uploads/storyteller_updater/0001/01/joyeuse_updater_mac_std_1.0.9_fr.dmg"
 
 state_folder="${XDG_STATE_HOME:-${HOME}/.local/state}/Joyeuse/"
@@ -219,7 +220,7 @@ update_secrets() {
     file=$(extract_file_from_updater "$F")
     cp --force --backup=simple --suffix=".bak" "${file}" "${mount_point}/${F}"
   done
-  echo "" > "${mount_point}/VERSION_V5.07"
+  echo "" > "${mount_point}/${JOY_VERSION_FILE}"
 
   serial_number="$(basename "$(ls -1 "${mount_point}/Secrets/JOY_"*)")"
   cat > "${tmp_folder}/info.js" <<EOJSON
@@ -241,7 +242,7 @@ EOJSON
 
 main() {
   localize
-  steps="${1:-YYYYYYYYY}"
+  steps="${1:-YYYYYYYYYY}"
 
   if [ "${steps:0:1}" = 'Y'  ]; then
     log "${JOY_UPD_FW_START}"
