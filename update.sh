@@ -7,7 +7,7 @@ JOY_VERSION="V05.09"
 JOY_FW_DL_URL="https://club.joyeuse.io/files/uploads/storyteller_updater/0001/01/joyeuse_updater_mac_std_1.0.9_fr.dmg"
 
 state_folder="${XDG_STATE_HOME:-${HOME}/.local/state}/Joyeuse/"
-tmp_folder="/tmp/joyeuse"
+tmp_folder="/tmp/joyeuse${JOY_VERSION}"
 mkdir -p "${state_folder}" "${tmp_folder}"
 
 trap updater_trap INT
@@ -157,11 +157,12 @@ go_boot_mode() {
 }
 
 dfu_search() {
-  # Wait for the expected device to show up
+  rm -f "${tmp_folder}/dfu_search"
   date >> "${state_folder}/dfu_search.log"
+  # Wait for the expected device to show up
   dfu-util -w -d 0483:df11 -a 0 -s 0x08000000:4 -U "${tmp_folder}/dfu_search" >> "${state_folder}/dfu_search.log" &
   last_pid="$!"
-  waiting_pid="$waiting_pid ${last_pid}"
+  waiting_pid="${waiting_pid:-""} ${last_pid}"
   start_time=$(date +%s)
   # Wait at most 120 seconds for connection
   while [[ $(($(date +%s) - start_time)) -lt 120 ]]; do
@@ -184,7 +185,7 @@ dfu_update() {
   file_size="$(stat --printf="%s" "${firmware_file}")"
   # Abort if file size it too big for board
   if [ "${file_size}" -gt 524288 ]; then
-    log "${JOY_UPD_SEARCH_FAIL}" >&2
+    log "${JOY_UPD_UPDATE_FAIL_FILE_SIZE}" >&2
     return 1
   fi
   set -x
@@ -227,6 +228,8 @@ main() {
     log "${JOY_UPD_FW_START}"
     firmware_file=$(get_fw)
     log "${JOY_UPD_FW_DONE}" "${firmware_file}"
+  else
+    firmware_file="$(ls "${tmp_folder}/"*.bin)"
   fi
 
   if [ "${steps:1:1}" = 'Y'  ]; then
