@@ -7,6 +7,9 @@ state_folder="${XDG_STATE_HOME:-${HOME}/.local/state}/Joyeuse/"
 tmp_folder="/tmp/joyeuse"
 mkdir -p "${state_folder}" "${tmp_folder}"
 
+JOY_VERSION="V05.09"
+JOY_FW_DL_URL="https://club.joyeuse.io/files/uploads/storyteller_updater/0001/01/joyeuse_updater_mac_std_1.0.9_fr.dmg"
+
 localize() {
   # Get user locale
   user_locale="$(echo "${LC_MESSAGES:-${LANG:-"en_US"}}" | cut -d'.' -f1)"
@@ -34,7 +37,7 @@ log() {
 download_updater() {
   # Download Mac updater from joyeuse website
   if [ ! -e "${tmp_folder}/updater.dmg" ]; then
-    curl -L https://club.joyeuse.io/files/uploads/storyteller_updater/0001/01/joyeuse_updater_mac_std_1.0.9_fr.dmg > ${tmp_folder}/updater.dmg
+    curl -L "${JOY_FW_DL_URL}" > ${tmp_folder}/updater.dmg
   fi
 }
 
@@ -190,7 +193,7 @@ update_secrets() {
   serial_number="$(basename "$(ls -1 "${mount_point}/Secrets/JOY_"*)")"
   cat > "${tmp_folder}/info.js" <<EOJSON
 var info = {
- VERSION: 'V05.07',
+ VERSION: '${JOY_VERSION}',
  SERIAL_NUMBER: '${serial_number}',
  BABY_MODE: 'N',
  LEGACY_HW: 'N',
