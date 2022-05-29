@@ -1,6 +1,8 @@
+#! /bin/sh
 
 export JOY_UPD_FW_START="Téléchargement du fichier microcode"
 export JOY_UPD_FW_FAIL="Impossible de trouver le fichier microcode"
+export JOY_UPD_FW_FAIL_TRUNCATE="Le fichier de microcode semble avoir été tronqué à un endroit inattendu"
 export JOY_UPD_FW_DONE='Fichier microcode trouvé: \"${1}\"'
 
 export JOY_UPD_SEARCH_START="Recherche du périphérique Joyeuse..."

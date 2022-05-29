@@ -1,6 +1,8 @@
+#! /bin/sh
 
 export JOY_UPD_FW_START="Downloading firmware file"
 export JOY_UPD_FW_FAIL="Unable to find a firmware file"
+export JOY_UPD_FW_FAIL_TRUNCATE="Firmware file seems to be truncated on unexpected bytes"
 export JOY_UPD_FW_DONE='Firmware file found: \"${1}\"'
 
 export JOY_UPD_SEARCH_START="Search for a Joyeuse drive..."

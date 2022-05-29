@@ -70,9 +70,28 @@ get_fw() {
   # Find the firmware file in the archive
   hex_file=$(extract_file_from_updater '.hex$')
   bin_file="${hex_file/.hex/.bin}"
-  # Convert hex file to bin (for dfu-util usage) filling gap with FF bytes
+  # Convert hex file to bin (for dfu-util usage)
+  #   filling gap with FF bytes
   objcopy --input-target=ihex --output-target=binary --gap-fill=0xFF \
-        "${hex_file}" "${bin_file}"
+        "${hex_file}" "${bin_file}.tmp"
+  # Truncate to 524272 bytes (max size minus 16 bytes)
+  head -c 524272 "${bin_file}.tmp" > "${bin_file}"
+  rm -f "${bin_file}.tmp"
+  # Assert that the resulting file ends with only dummy bytes
+  last_bytes="$(tail -c 16 "${bin_file}" | \
+    hexdump | \
+    head -n1 | \
+    cut -d' ' -f2- | \
+    tr ' ' '\n' | \
+    sort | \
+    uniq -c | \
+    sed 's/^ *//')"
+  if [ "${last_bytes}" = "8 0000" ] || [ "${last_bytes}" = "8 ffff" ]; then
+    true
+  else
+    log "${JOY_UPD_FW_FAIL_TRUNCATE}" >&2
+    exit 255
+  fi
   echo "${bin_file}"
 }
 
