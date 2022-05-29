@@ -34,7 +34,7 @@ log() {
 download_updater() {
   # Download Mac updater from joyeuse website
   if [ ! -e "${tmp_folder}/updater.dmg" ]; then
-    curl -L https://club.joyeuse.io/files/uploads/storyteller_updater/0001/01/joyeuse_updater_mac_std_1.0.8_fr.dmg > ${tmp_folder}/updater.dmg
+    curl -L https://club.joyeuse.io/files/uploads/storyteller_updater/0001/01/joyeuse_updater_mac_std_1.0.9_fr.dmg > ${tmp_folder}/updater.dmg
   fi
 }
 
