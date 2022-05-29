@@ -3,12 +3,20 @@
 set -eu
 if [ -n "${JOY_UPD_DEBUG:-""}" ]; then set -x; fi
 
+JOY_VERSION="V05.09"
+JOY_FW_DL_URL="https://club.joyeuse.io/files/uploads/storyteller_updater/0001/01/joyeuse_updater_mac_std_1.0.9_fr.dmg"
+
 state_folder="${XDG_STATE_HOME:-${HOME}/.local/state}/Joyeuse/"
 tmp_folder="/tmp/joyeuse"
 mkdir -p "${state_folder}" "${tmp_folder}"
 
-JOY_VERSION="V05.09"
-JOY_FW_DL_URL="https://club.joyeuse.io/files/uploads/storyteller_updater/0001/01/joyeuse_updater_mac_std_1.0.9_fr.dmg"
+trap updater_trap INT
+
+updater_trap() {
+  for pid in ${waiting_pid:-""}; do
+    kill -9 "$pid"
+  done
+}
 
 localize() {
   # Get user locale
@@ -152,12 +160,13 @@ dfu_search() {
   # Wait for the expected device to show up
   date >> "${state_folder}/dfu_search.log"
   dfu-util -w -d 0483:df11 -a 0 -s 0x08000000:4 -U "${tmp_folder}/dfu_search" >> "${state_folder}/dfu_search.log" &
-  waiting_pid=$!
+  last_pid="$!"
+  waiting_pid="$waiting_pid ${last_pid}"
   start_time=$(date +%s)
   # Wait at most 120 seconds for connection
   while [[ $(($(date +%s) - start_time)) -lt 120 ]]; do
     sleep 2
-    if ps ${waiting_pid} >/dev/null ; then
+    if ps ${last_pid} >/dev/null ; then
       echo -n "."
     else
       # dfu-util detected device
